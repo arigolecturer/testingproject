@@ -22,7 +22,7 @@ export default function Home() {
     <div>
       {
         dataProvinsi?.map((item, index) => (
-          <div style={{ fontSize: '14px', color: '#4287f5' }}>{item?.name}</div>
+          <div key={index} style={{ fontSize: '14px', color: '#4287f5' }}>{item?.name}</div>
         ))
       }
     </div>
