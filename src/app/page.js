@@ -1,48 +1,30 @@
+'use client'
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
+import axios from 'axios';
+
 export default function Home() {
+  const [dataProvinsi, setDataProvinsi] = useState([])
+
+  const testingFun = async () => {
+    const response = await axios.get('https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json')
+
+    setDataProvinsi(response?.data)
+  }
+
+  useEffect(() => {
+    testingFun()
+  }, [])
+
   return (
     <div>
-      <table>
-        <tr>
-          <th>Company</th>
-          <th>Contact</th>
-          <th>Country</th>
-        </tr>
-        <tr>
-          <td>Alfreds Futterkiste</td>
-          <td>Maria Anders</td>
-          <td>Germany</td>
-        </tr>
-        <tr>
-          <td>Centro comercial Moctezuma</td>
-          <td>Francisco Chang</td>
-          <td>Mexico</td>
-        </tr>
-        <tr>
-          <td>Ernst Handel</td>
-          <td>Roland Mendel</td>
-          <td>Austria</td>
-        </tr>
-        <tr>
-          <td>Island Trading</td>
-          <td>Helen Bennett</td>
-          <td>UK</td>
-        </tr>
-        <tr>
-          <td>Laughing Bacchus Winecellars</td>
-          <td>Yoshi Tannamuri</td>
-          <td>Canada</td>
-        </tr>
-        <tr>
-          <td>Magazzini Alimentari Riuniti</td>
-          <td>Giovanni Rovelli</td>
-          <td>Italy</td>
-        </tr>
-      </table>
-
-      <p style={{ color: '#4287f5', fontSize: '20' }}>Joko Testing</p>
-      <p style={{ color: '#4287f5', fontSize: '30px' }}>Nilai ini adalah</p>
+      {
+        dataProvinsi?.map((item, index) => (
+          <div style={{ fontSize: '14px', color: '#4287f5' }}>{item?.name}</div>
+        ))
+      }
     </div>
   );
 }
