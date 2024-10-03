@@ -1,8 +1,6 @@
 import Image from "next/image";
 
 export default function Home() {
-  let variabelA = 22;
-
   return (
     <div>
       <table>
@@ -43,8 +41,8 @@ export default function Home() {
         </tr>
       </table>
 
-      <p>I am normal</p>
-      <p style={{ color: '#4287f5', fontSize: '30px' }}>Nilai ini adalah {variabelA}</p>
+      <p style={{ color: '#4287f5', fontSize: '20' }}>Joko Testing</p>
+      <p style={{ color: '#4287f5', fontSize: '30px' }}>Nilai ini adalah</p>
     </div>
   );
 }
